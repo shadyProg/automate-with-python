@@ -42,7 +42,9 @@ You will go through step-by-step instructions to build functional programs and t
 *   **Editor:** The **Mu editor**, which provides a simple environment for entering code and an **interactive shell (REPL)** for experimentation.
 *   **But** i will use VSCode
 *   **Help Resources:** Utilizing error messages, online search engines, and communities like **Stack Overflow** to solve programming hurdles.
-
+  
+---
+key: 1234
 ---
 
 ## **4. Philosophy**
