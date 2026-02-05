@@ -24,10 +24,18 @@ The author explains the various ways to write strings in Python to handle comple
 
 - **Raw Strings**: Placing an `r` before the quotes (e.g., `r'C:\Users'`) tells Python to ignore all escape characters. This is essential for file paths and regular expressions.
 - **Triple Quotes**: Using `'''` or `"""` allows for **multiline strings**. All whitespace, tabs, and newlines inside are included in the string value.
+_Notice that the single quote character in Eve's does not need to be escaped_
 
 ### 1.3 String Interpolation and f-strings
 
 - **Interpolation**: Using `%s` as a marker inside a string to be replaced by variables.
+```
+ name = 'Al' 
+ age = 4000 
+ 'My name is %s. I am %s years old.' % (name, age)
+ >>> 'My name is Al. I am 4000 years old.'
+```
+
 - **f-strings**: (Introduced in Python 3.6) Uses an `f` prefix and braces `{}` to place expressions directly inside the text.
     - **Example Code**:
         
@@ -61,27 +69,114 @@ Methods are functions called on a string to analyze or transform it.
     - `isalnum()`: Letters and numbers only.
     - `isdecimal()`: Numbers only.
     - `isspace()`: Whitespace (spaces, tabs, newlines) only.
-    - `istitle()`: Title case (words start with capital letters).
-
+    - `istitle()`: Title case ( each word start with capital letters).
+```
+ spam = 'Hello, world!' 
+ spam = spam.upper() 
+ spam 
+ >>> 'HELLO, WORLD!' 
+ spam = spam.lower()  
+ spam 
+ >>> 'hello, world!'
+```
+==note==
+- isupper() or islower dont check numbers is does skiped.
 ### 2.2 Searching and Splitting
 
 - **`startswith()` and `endswith()`**: Check the beginning or end of a string.
-- **`join()`**: Combines a list of strings into one string, using a "connector" string.
-- **`split()`**: Breaks one string into a list of strings based on a delimiter (default is whitespace).
-- **`partition()`**: Splits a string into a 3-item tuple: (before, separator, after).
+
+```
+ 'Hello, world!'.endswith('world!') 
+>>> True
+```
+
+- **`join()`**: Combines a list of strings into one string, using a "connector" string and return `string`
+
+```
+ ', '.join(['cats', 'rats', 'bats'])
+ >>> 'cats, rats, bats' 
+ ' '.join(['My', 'name', 'is', 'Simon']) 
+ >>> 'My name is Simon' 
+ 'ABC'.join(['My', 'name', 'is', 'Simon'])
+ >>> 'MyABCnameABCisABCSimon'
+```
+
+- **`split()`**: Breaks one string into a list of strings based on a delimiter (default is whitespace) and  return `list`
+
+```
+ 'My name is Simon'.split()
+>>>  ['My', 'name', 'is', 'Simon']
+
+ 'MyABCnameABCisABCSimon'.split('ABC') 
+>>> ['My', 'name', 'is', 'Simon'] 
+ 'My name is Simon'.split('m') 
+>>>  ['My na', 'e is Si', 'on']
+```
+_Best case_
+```
+ spam = '''Dear Alice,
+
+How have you been? I am fine.
+
+There is a container in the fridge
+
+that is labeled "Milk Experiment."
+
+Please do not drink it.
+
+Sincerely,
+
+Bob'''
+
+ spam.split('\n')
+
+>>> ['Dear Alice,', 'How have you been? I am fine.', 'There is a container in the
+
+fridge', 'that is labeled "Milk Experiment."', '', 'Please do not drink it.',
+
+'Sincerely,', 'Bob']
+```
+
+- **`partition()`**: Splits a string into a 3-item tuple: (before, separator, after) , and return `tuple`
+
+```
+ before, sep, after = 'Hello, world!'.partition(' ') 
+ before 
+ >>> 'Hello,' 
+ after 
+ >>> 'world!'
+```
 
 ### 2.3 Justifying and Stripping
 
 - **Justification**: `rjust()`, `ljust()`, and `center()` add padding to align text, which is useful for printing tables.
+_Take one or Two argument_ First is number of repeat character and second is character 
 - **Stripping**: `strip()`, `lstrip()`, and `rstrip()` remove whitespace from the ends of a string.
 
+```
+ spam = ' Hello, World '
+
+ spam.strip()
+
+>>> 'Hello, World'
+
+ spam.lstrip()
+
+>>> 'Hello, World '
+
+ spam.rstrip()
+
+>>> ' Hello, World'
+```
 ## 3. Characters and the Clipboard
 
 ### 3.1 Numeric Values (Unicode)
 
-- **`ord()`**: Returns the numeric "code point" of a single character.
+- **`ord()`**: Returns the numeric "code point" of a single character. `ASCII code`
 - **`chr()`**: Returns the character associated with a numeric code point.
-
+```
+>>> chr(ord('A') + 1) 'B'
+```
 ### 3.2 The `pyperclip` Module
 
 - This third-party module allows Python scripts to **copy** and **paste** text to the system clipboard.
@@ -102,20 +197,26 @@ Methods are functions called on a string to analyze or transform it.
 - **f-string Prefix**: If you forget the `f` before an f-string, the braces `{}` will be treated as plain text rather than variables.
 - **Concatenation Errors**: Python will crash if you try to use `+` to join a string and an integer. You must convert the integer using `str()` first.
 - **The `input()` trap**: In Python 3, `input()` always returns a string. If the user types a number, it will be a string like `'42'`, not an integer `42`.
+- **partition()** If the separator string can’t be found, the first string returned in the tuple will be the entire string, and the other two strings will be empty:
+```
+ 'Hello, world!'.partition('XYZ') 
+>>> ('Hello, world!', '', '')
+```
 
 ---
 
 # Vocabulary Table
 
-|Word/Term|Simple English Definition|Arabic Translation|
-|:--|:--|:--|
-|**Literal**|A fixed value written exactly as it appears in code.|قيمة حرفية|
-|**Escape Character**|A symbol () used to enter characters that are hard to type.|رمز هروب|
-|**Interpolation**|Putting a variable or value inside a string.|استكمال / إقحام النص|
-|**Whitespace**|Characters used for spacing (spaces, tabs, newlines).|مسافات فارغة|
-|**Delimiter**|A character that marks the limit or boundary between data.|فاصل|
-|**Substring**|A smaller part of a larger string.|نص فرعي|
-|**Justify**|To align text to the left, right, or center.|محاذاة|
+| Word/Term            | Simple English Definition                                   | Arabic Translation   |
+| :------------------- | :---------------------------------------------------------- | :------------------- |
+| **Literal**          | A fixed value written exactly as it appears in code.        | قيمة حرفية           |
+| **Escape Character** | A symbol () used to enter characters that are hard to type. | رمز هروب             |
+| **Interpolation**    | Putting a variable or value inside a string.                | استكمال / إقحام النص |
+| **Whitespace**       | Characters used for spacing (spaces, tabs, newlines).       | مسافات فارغة         |
+| **Delimiter**        | A character that marks the limit or boundary between data.  | فاصل                 |
+| **Substring**        | A smaller part of a larger string.                          | نص فرعي              |
+| **Justify**          | To align text to the left, right, or center.                | محاذاة               |
+| **inconvenience**    |                                                             | غير مريح             |
 
 ---
 
