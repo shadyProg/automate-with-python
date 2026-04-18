@@ -60,7 +60,8 @@ Special characters define how many times a pattern should appear.
 
 ### 4.1 Quantifiers
 
-- **Question Mark (`?`)**: Matches **zero or one** of the preceding group (makes it optional).
+- **Question Mark (`?`)**: Matches **zero or one** of the - preceding group - (\d\d) (makes it optional).
+- - **escape character(`\`)**: will match actual parenthesis characters. In regular expressions, the following characters have special meanings:
 - **Star (`*`)**: Matches **zero or more** occurrences.
 - **Plus (`+`)**: Matches **one or more** (at least one is required).
 - **Braces (`{n,m}`)**: Matches a specific range of repetitions (e.g., `{3,5}` matches 3, 4, or 5 repetitions).
@@ -69,7 +70,17 @@ Special characters define how many times a pattern should appear.
 
 - **Greedy**: Python's default; matches the **longest** possible string.
 - **Non-greedy**: Adding a `?` after braces (e.g., `{3,5}?`) tells Python to match the **shortest** possible string.
+```
+>>> greedyHaRegex = re.compile(r'(Ha){3,5}')
+>>> mo1 = greedyHaRegex.search('HaHaHaHaHa')
+>>> mo1.group()
+'HaHaHaHaHa'
+>>> nongreedyHaRegex = re.compile(r'(Ha){3,5}?')
+>>> mo2 = nongreedyHaRegex.search('HaHaHaHaHa')
+>>> mo2.group()
+'HaHaHa'
 
+```
 ## 5. Character Classes and Boundaries
 
 Shorthand codes help you match categories of characters.
@@ -95,7 +106,7 @@ Methods for finding every match or changing text.
 ### 6.1 The `findall()` Method
 
 - **Difference from `search()`**: While `search()` returns the first match, `findall()` returns a list of every match in the entire string.
-- **Return Format**: If the regex has no groups, it returns a list of strings; if it has groups, it returns a list of tuples.
+- **Return Format**: If the regex has no groups, it returns a list of strings; if it has groups, it returns a list of tuples. _hint_
 
 ### 6.2 The `sub()` Method
 
