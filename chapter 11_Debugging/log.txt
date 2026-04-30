@@ -1,0 +1,18 @@
+2026-04-24 16:07:06,743 - DEBUG - Start of program
+2026-04-24 16:07:06,743 - DEBUG - Start of factorial(5%)
+2026-04-24 16:07:06,743 - DEBUG - i is 1, total is 1
+2026-04-24 16:07:06,743 - DEBUG - i is 2, total is 2
+2026-04-24 16:07:06,743 - DEBUG - i is 3, total is 6
+2026-04-24 16:07:06,744 - DEBUG - i is 4, total is 24
+2026-04-24 16:07:06,744 - DEBUG - i is 5, total is 120
+2026-04-24 16:07:06,744 - DEBUG - End of factorial(5%)
+2026-04-24 16:07:06,756 - DEBUG - End of program
+2026-04-24 16:08:22,512 - DEBUG - Start of program
+2026-04-24 16:08:22,512 - DEBUG - Start of factorial(5%)
+2026-04-24 16:08:22,512 - DEBUG - i is 1, total is 1
+2026-04-24 16:08:22,512 - DEBUG - i is 2, total is 2
+2026-04-24 16:08:22,512 - DEBUG - i is 3, total is 6
+2026-04-24 16:08:22,513 - DEBUG - i is 4, total is 24
+2026-04-24 16:08:22,513 - DEBUG - i is 5, total is 120
+2026-04-24 16:08:22,513 - DEBUG - End of factorial(5%)
+2026-04-24 16:08:22,513 - DEBUG - End of program

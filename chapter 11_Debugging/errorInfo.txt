@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/media/shadyahmed/C69EBC679EBC5223/Users/ECC.DESKTOP-BOGB7O8/Desktop/reading/ReadingComputerScience/chapters/chapter 11/2-traceback.py", line 3, in <module>
+    raise Exception('This is the error message.')
+Exception: This is the error message.
